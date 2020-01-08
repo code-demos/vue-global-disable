@@ -1,5 +1,3 @@
-# vue-global-disable
-
 ## Project setup
 ```
 npm install
