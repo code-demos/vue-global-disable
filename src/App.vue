@@ -1,17 +1,44 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <a-locale-provider :locale="zh_CN">
+    <div id="app">
+      <a-button @click="toggleDisable">切换</a-button>
+      <DemoForm />
+    </div>
+  </a-locale-provider>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import zh_CN from 'ant-design-vue/lib/locale-provider/zh_CN'
+import DemoForm from './components/DemoForm';
 
 export default {
   name: 'app',
+  provide() {
+    // eslint-disable-next-line no-debugger
+    debugger
+    return this.provider
+  },
+  data() {
+    return {
+      zh_CN,
+      isDisabled: false
+    }
+  },
+  computed: {
+    provider() {
+      const { isDisabled } = this
+      // eslint-disable-next-line no-debugger
+      debugger
+      return { isDisabled }
+    }
+  },
   components: {
-    HelloWorld
+    DemoForm
+  },
+  methods: {
+    toggleDisable() {
+      this.isDisabled = !this.isDisabled
+    }
   }
 }
 </script>
